@@ -13,14 +13,14 @@ INSERT INTO users (id, tenant_id, email, password_hash, role) VALUES
     'cccccccc-cccc-cccc-cccc-cccccccccccc',
     'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
     'alice@rossi.it',
-    '$2b$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy',
+    '$2a$10$wCKPp4/NuuSulFQjpmmKMuA7vGvt43yUVnqGD90rzIVjXKk0wTWXC',
     'admin'
   ),
   (
     'dddddddd-dddd-dddd-dddd-dddddddddddd',
     'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb',
     'bob@bianchi.it',
-    '$2b$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy',
+    '$2a$10$wCKPp4/NuuSulFQjpmmKMuA7vGvt43yUVnqGD90rzIVjXKk0wTWXC',
     'admin'
   )
 ON CONFLICT DO NOTHING;

@@ -26,8 +26,13 @@ async function withTenantContext(tenantId, callback) {
   const client = await pool.connect();
   try {
     await client.query('BEGIN');
-    // Bind the tenant to this transaction — RLS reads this variable
-    await client.query('SET LOCAL app.current_tenant_id = $1', [tenantId]);
+    // set_config(key, value, is_local=true) is the parameterized equivalent of
+    // SET LOCAL — scopes the variable to this transaction only.
+    // SET LOCAL doesn't accept $1 placeholders; set_config does.
+    await client.query('SELECT set_config($1, $2, true)', [
+      'app.current_tenant_id',
+      tenantId,
+    ]);
     const result = await callback(client);
     await client.query('COMMIT');
     return result;
